@@ -74,7 +74,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>hans@test.com</td>
+                  <td>dolor@test.com</td>
                   <td><a href="#">Send Email</a></td>
                 </tr>
                 <tr>
@@ -99,7 +99,7 @@
 		<script type="text/javascript" src="js/custom.js"></script>       
  
         <script type="text/javascript">
-            //app.initialize();
+            app.initialize();
         </script>
         
         <script type="text/javascript">
@@ -107,18 +107,30 @@
 	        	var request = new XMLHttpRequest();
 	            var a = request.open("GET", "http://gemcollection.com/api/orders?ws_key=TERCPT30RJ8XGBD2NER3E88NKBQR02VU",true);
 	            
-	            request.onreadystatechange = function() {
+	            console.log(a);
+	            
+	            request.onreadystatechange = function() {//Call a function when the state changes.
+	            	
 	                if (request.readyState == 4) {
 	                    if (request.status == 200 || request.status == 0) {
-	    	            	alert(request.status); 
+	                        var orders = JSON.parse(request.responseText);
+
+							console.log(orders.results);
+
+	                        var data = "<table cellspacing='0'>";
+	                        var tableClass;
+	                        for (i = 0; i < orders.results.length; i++) {
+	                            console.log(orders);
+	                        }
+	                        data += "</table>";
+	                        var ordersDiv = document.getElementById("ps_orders");
+	                        ordersDiv.innerHTML = data;
 	                    }
 	                }
-	            };
-	            
+	            }
 	            console.log("asking for orders");
 	            request.send();	
 	        });
         </script>
     </body>
 </html>
-
