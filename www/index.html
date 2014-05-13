@@ -33,6 +33,7 @@
 <script type="text/javascript" charset="utf-8">
 	var pictureSource; // picture source
 	var destinationType; // sets the format of returned value 
+	var encodingType;
 
 	// Wait for PhoneGap to connect with the device
 	//
@@ -43,6 +44,7 @@
 	function onDeviceReady() {
 		pictureSource = navigator.camera.PictureSourceType;
 		destinationType = navigator.camera.DestinationType;
+		encodingType = navigator.camera.EncodingType;
 	}
 
 	// Called when a photo is successfully retrieved
@@ -61,6 +63,23 @@
 	      // Show the captured photo
 	      // The inline CSS rules are used to resize the image
 	      smallImage.src = "data:image/jpeg;base64," + imageData;
+	      
+	      window.plugins.emailComposer.showEmailComposerWithCallback(
+	    		  onSuccessEmailCallback,
+	    		  "Sample Email with Attachment",
+	    		  "This is a sample email.",
+	    		  ["allan.danos@98labs.com"],
+	    		  ["hans.torres@98labs.com"],
+	    		  [],
+	    		  false,
+	    		  [],
+	    		  [["attachment1.png", imageData]]
+	    	);
+	      
+	}
+	
+	function onSuccessEmailCallback(result) {
+		alert("email sent" + result);
 	}
 
 	// A button will call this function
@@ -70,13 +89,13 @@
 		// Take picture using device camera and retrieve image as base64-encoded string
 		navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
 			quality : 50,
-			destinationType : destinationType.FILE_URI,
+			destinationType : destinationType.DATA_URL,
+			encodingType: encodingType.PNG,
 	        saveToPhotoAlbum : true,
 		});
 		
-		
 	}
-
+	
 	// Called if something bad happens.
 	// 
 	function onFail(message) {
@@ -142,8 +161,10 @@
 			</div>
 
 
+			<canvas id="myCanvas" style="display: none;"></canvas>
+			
 			<!--  <button onclick="capturePhoto();">Capture Photo</button>  -->
-			<br> <img style="display: none; width: 60px; height: 60px;"
+			<br> <img style="display: none; width: 100px; height: 100px;"
 				id="smallImage" src="" /> <img style="display: none;"
 				id="largeImage" src="" />
 		</div>
