@@ -46,8 +46,7 @@
 		destinationType = navigator.camera.DestinationType;
 		encodingType = navigator.camera.EncodingType;
 
-				alert('test');
-	        	var request = new XMLHttpRequest();
+				var request = new XMLHttpRequest();
 	            request.open("GET", "http://192.155.80.132/prestashop/api/orders?ws_key=XTDR0LEQ734OSS0LA6URUCDEQ631SPGU",true);
 	            
 	            request.onreadystatechange = function() {
@@ -61,8 +60,7 @@
 
 									for (i=0;i<orderList.length;i++)
 									  {
-									  		console.log(orderList[i].getAttribute('id'));
-											document.getElementById('result-rows').innerHTML += "<tr><td> " + orderList[i].getAttribute('id') +"</td></tr>";
+											document.getElementById('result-rows').innerHTML += "<tr><td>  <a href='order.html?id= "+ orderList[i].getAttribute('id') +"'>P2P order # :" + orderList[i].getAttribute('id') + "</a></td></tr>";
 									  }
 	                    }
 	                }
