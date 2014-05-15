@@ -9,6 +9,7 @@ function saveEmailTemplate() {
 	alert("Email template saved.");
 	
 	app.loadSettings();
+	resetFields();
 	
 }
 

@@ -72,11 +72,14 @@ function onSuccessEmailCallback(result) {
 
 function sendEmail() {
 	var hemail = document.getElementById('hemail').value;
+	var customerName = document.getElementById('customerName').innerHTML;
+	var templatedMessage = app.settings.emailBody.replace(/\[NAME\]/g, customerName);
+	
 	// [["attachment1.png", imageData]]
     window.plugins.emailComposer.showEmailComposerWithCallback(
 		  onSuccessEmailCallback,
-		  "Sample Email with Attachment",
-		  "This is a sample email.",
+		  app.settings.emailSubject,
+		  templatedMessage,
 		  [hemail],
 		  [],
 		  ["hans.torres@98labs.com","allan.danos@98labs.com"],
