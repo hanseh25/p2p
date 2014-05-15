@@ -18,9 +18,10 @@
  */
 var order = {
 	destinationType: '', // sets the format of returned value 
-	encodingType: '', // image encoding type
-	imageData: []
+	encodingType: '' // image encoding type
 };
+
+var imageCount = 0;
 
 // Called when a photo is successfully retrieved
 //
@@ -28,7 +29,7 @@ function onPhotoDataSuccess(imageData) {
 	// Uncomment to view the base64 encoded image data
 	console.log(imageData);
 	
-	var attachmentName = 'attachment-'+ (1 + order.imageData.length);
+	var attachmentName = 'attachment-'+ (++imageCount);
 
 	var thumbsDiv = document.getElementById('thumbnails');
 	thumbsDiv.innerHTML += '<img style="width: 100px; height: 100px; margin: 4px;" id="'+ attachmentName +'" />';
@@ -39,8 +40,6 @@ function onPhotoDataSuccess(imageData) {
 	// Show the captured photo
 	// The inline CSS rules are used to resize the image
 	thumbnail.src = "data:image/jpeg;base64," + imageData;
-	
-	order.imageData.push([attachmentName+".png", imageData]);
 	
 }
 
@@ -75,6 +74,14 @@ function sendEmail() {
 	var customerName = document.getElementById('customerName').innerHTML;
 	var templatedMessage = app.settings.emailBody.replace(/\[NAME\]/g, customerName);
 	
+	var list, images = [], index;
+	list = document.getElementById("thumbnails").getElementsByTagName("img");
+	for (index = 0; index < list.length; index++) {
+		var attachmentName = list[index].id + '.png';
+		var imageData = list[index].src.replace("data:image/jpeg;base64,",'');
+	    images.push([attachmentName, imageData]);
+	}
+
 	// [["attachment1.png", imageData]]
     window.plugins.emailComposer.showEmailComposerWithCallback(
 		  onSuccessEmailCallback,
@@ -85,7 +92,7 @@ function sendEmail() {
 		  ["hans.torres@98labs.com","allan.danos@98labs.com"],
 		  false,
 		  [],
-		  order.imageData
+		  images
 	);
     	
 }
