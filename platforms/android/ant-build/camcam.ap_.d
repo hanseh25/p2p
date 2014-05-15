@@ -19,6 +19,7 @@
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/cordova_plugins.js \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/css \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/EmailComposer.js \
+/Users/allan/workspace/cordova/p2p/platforms/android/assets/www/emailTemplate.html \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/icon.png \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/img \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/index.html \
@@ -26,6 +27,7 @@
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/login.html \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/order.html \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/plugins \
+/Users/allan/workspace/cordova/p2p/platforms/android/assets/www/prestaConfig.html \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/res \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/spec \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/spec.html \
@@ -47,9 +49,11 @@
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/css/index.css \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/css/style.css \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/img/logo.png \
+/Users/allan/workspace/cordova/p2p/platforms/android/assets/www/js/emailTemplate.js \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/js/index.js \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/js/jquery.min.js \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/js/order.js \
+/Users/allan/workspace/cordova/p2p/platforms/android/assets/www/js/prestaConfig.js \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/plugins/com.jcjee.plugins.emailcomposer \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/plugins/org.apache.cordova.camera \
 /Users/allan/workspace/cordova/p2p/platforms/android/assets/www/plugins/com.jcjee.plugins.emailcomposer/www \

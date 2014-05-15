@@ -27,7 +27,7 @@ under the License.
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
 
-		<title>p2p Order</title>
+		<title>p2p Presta Config</title>
 	</head>
 	<body>
 		<div class="app">
@@ -41,18 +41,18 @@ under the License.
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Project name</a>
+						<a class="navbar-brand" href="#">P2P</a>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<a href="#">Dashboard</a>
+								<a href="index.html">Dashboard</a>
 							</li>
 							<li>
-								<a href="#">Email Template</a>
+								<a href="emailTemplate.html">Email Template</a>
 							</li>
 							<li>
-								<a href="#">PrestaConfig</a>
+								<a href="prestaConfig.html">PrestaConfig</a>
 							</li>
 							<li>
 								<a href="#">Help</a>
@@ -69,7 +69,7 @@ under the License.
 						<br />
 						<h1 class="page-header">Dashboard</h1>
 
-						<h2 class="sub-header">Order Info</h2>
+						<h2 class="sub-header">Presta Config</h2>
 						<div class="table-responsive">
 							<table  class="table table-striped">
 								<tbody id="result-rows">
@@ -81,31 +81,40 @@ under the License.
 					</div>
 				</div>
 
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<tbody id="result-rows">
+							<!-- the area which is populated by rows -->
+							<tr>
+								<td>Presta URL</td>
+								<td><input type="text" id="prestaUrl" /></td>
+							</tr>
+							<tr>
+								<td>Presta Webservice KEY</td>
+								<td><input type="text" id="prestaKey" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
 				<div class="col-sm-4 col-sm-offset-1 col-md-5 col-md-offset-5 main">
 					<!-- the area for buttons/actions sending email and image -->
-					<button type="button" onclick="capturePhoto()">
-						Capture
+					<button type="button" onclick="resetFields()">
+						Reset
 					</button>
-					<button type="button" onclick="sendEmail()">
-						Send Email
+					<button type="button" onclick="savePrestaConfig()">
+						Save
 					</button>
 				</div>
 
-				<div class="row">
-					<div id="ps_orders"></div>
-				</div>
-
-				<div id="thumbnails"></div>
 			</div>
-			<!-- Hidden field for email -->
-			<input type="hidden" id="hemail" value="" />
 
 		</div><!-- end of app -->
 		<script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/prestaConfig.js"></script>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/order.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			// Wait for PhoneGap to connect with the device
@@ -115,8 +124,7 @@ under the License.
 			// PhoneGap is ready to be used!
 			//
 			function onDeviceReady() {
-				order.destinationType = navigator.camera.DestinationType.DATA_URL;
-				order.encodingType = navigator.camera.EncodingType.PNG;
+				resetFields()
 			}
 		</script>
 		<script type="text/javascript">
@@ -126,63 +134,6 @@ under the License.
 
 		<script type="text/javascript">
 			$(function() {
-				var $_GET = {};
-
-				document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
-					function decode(s) {
-						return decodeURIComponent(s.split("+").join(" "));
-					}
-
-					$_GET[decode(arguments[1])] = decode(arguments[2]);
-				});
-
-				var id = $_GET["id"];
-
-				var request = new XMLHttpRequest();
-				request.open("GET", "http://192.155.80.132/prestashop/api/orders/" + id + "?ws_key=XTDR0LEQ734OSS0LA6URUCDEQ631SPGU", true);
-
-				request.onreadystatechange = function() {
-					if (request.readyState == 4) {
-						if (request.status == 200 || request.status == 0) {
-							var ordersXml = request.responseXML;
-
-							var order = ordersXml.getElementsByTagName("order");
-
-							console.log(order[0]);
-							var customerId = order[0].getElementsByTagName("id_customer")[0].childNodes[0].nodeValue;
-
-							var jarray = ["id", "id_customer", "invoice_number", "invoice_date", "payment"];
-
-							for ( x = 0; x < 5; x++) {
-								document.getElementById('result-rows').innerHTML += "<tr><td>  " + jarray[x] + " : </td><td>" + order[0].getElementsByTagName(jarray[x])[0].childNodes[0].nodeValue + "</td></tr>";
-							}
-
-							var customerRequest = new XMLHttpRequest();
-							customerRequest.open("GET", "http://192.155.80.132/prestashop/api/customers/" + customerId + "?ws_key=XTDR0LEQ734OSS0LA6URUCDEQ631SPGU", true);
-
-							customerRequest.onreadystatechange = function() {
-								if (customerRequest.readyState == 4) {
-									if (customerRequest.status == 200 || customerRequest.status == 0) {
-										var customerXml = customerRequest.responseXML;
-										var customer = customerXml.getElementsByTagName("customer");
-										console.log(customer[0]);
-										document.getElementById('result-rows').innerHTML += "<tr><td>  Name : </td><td id='customerName'>" + customer[0].getElementsByTagName("firstname")[0].childNodes[0].nodeValue + " " + customer[0].getElementsByTagName("lastname")[0].childNodes[0].nodeValue + "</td></tr>";
-										document.getElementById('result-rows').innerHTML += "<tr><td>  Email : </td><td>" + customer[0].getElementsByTagName("email")[0].childNodes[0].nodeValue + "</td></tr>";
-
-										// save email on a hidden field for sending photo
-										var email = customer[0].getElementsByTagName("email")[0].childNodes[0].nodeValue;
-										$('#hemail').val(email);
-									}
-								}
-							};
-							console.log("fetching email address");
-							customerRequest.send();
-						}
-					}
-				};
-
-				console.log("asking for orders");
-				request.send();
 			});
 		</script>
 	</body>

@@ -166,7 +166,7 @@ under the License.
 										var customerXml = customerRequest.responseXML;
 										var customer = customerXml.getElementsByTagName("customer");
 										console.log(customer[0]);
-										document.getElementById('result-rows').innerHTML += "<tr><td>  Name : </td><td>" + customer[0].getElementsByTagName("firstname")[0].childNodes[0].nodeValue + " " + customer[0].getElementsByTagName("lastname")[0].childNodes[0].nodeValue + "</td></tr>";
+										document.getElementById('result-rows').innerHTML += "<tr><td>  Name : </td><td id='customerName'>" + customer[0].getElementsByTagName("firstname")[0].childNodes[0].nodeValue + " " + customer[0].getElementsByTagName("lastname")[0].childNodes[0].nodeValue + "</td></tr>";
 										document.getElementById('result-rows').innerHTML += "<tr><td>  Email : </td><td>" + customer[0].getElementsByTagName("email")[0].childNodes[0].nodeValue + "</td></tr>";
 
 										// save email on a hidden field for sending photo

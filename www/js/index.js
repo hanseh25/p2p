@@ -22,7 +22,7 @@ var app = {
 		prestaUrl: '',
 		prestaKey: '',
 		emailSubject:'',
-		emailTemplate:''
+		emailBody:''
 	},
 	
     // Application Constructor
@@ -59,7 +59,14 @@ var app = {
     	this.settings.prestaUrl = window.localStorage.getItem("prestaUrl");
 		this.settings.prestaKey = window.localStorage.getItem("prestaKey");
 		this.settings.emailSubject = window.localStorage.getItem("emailSubject");
-		this.settings.emailTemplate = window.localStorage.getItem("emailTemplate");
+		this.settings.emailBody = window.localStorage.getItem("emailBody");
+		
+		if (this.settings.emailSubject == null || this.settings.emailSubject == undefined || this.settings.emailSubject == '') {
+			this.settings.emailSubject ='P2P Order Photos';
+		}
+		if (this.settings.emailBody == null || this.settings.emailBody == undefined || this.settings.emailBody == '') {
+			this.settings.emailBody = 'Hi [NAME],\nPlease find attached photos of your orders.\nBest regards,\nP2P Team';
+		}
     },
     
     saveSetting: function(key, value) {
