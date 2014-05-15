@@ -1,2 +1,2 @@
-/Users/allan/workspace/adt/P2P/assets/platforms/android/ant-build/AndroidManifest.xml : \
-/Users/allan/workspace/adt/P2P/assets/platforms/android/AndroidManifest.xml \
+/home/hanseh/Workspace/p2p/platforms/android/ant-build/AndroidManifest.xml : \
+/home/hanseh/Workspace/p2p/platforms/android/AndroidManifest.xml \
