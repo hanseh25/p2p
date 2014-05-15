@@ -6,7 +6,7 @@ function savePrestaConfig() {
 	var prestaKey = document.getElementById("prestaKey");
 	app.saveSetting("prestaKey", prestaKey.value);
 	
-	alert("Email template saved.");
+	alert("Presta config saved.");
 	
 	app.loadSettings();
 	
