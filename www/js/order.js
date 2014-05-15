@@ -28,7 +28,7 @@ function onPhotoDataSuccess(imageData) {
 	// Uncomment to view the base64 encoded image data
 	console.log(imageData);
 	
-	var attachmentName = 'attachment-'+ order.imageData.length + 1;
+	var attachmentName = 'attachment-'+ (1 + order.imageData.length);
 
 	var thumbsDiv = document.getElementById('thumbnails');
 	thumbsDiv.innerHTML += '<img style="width: 100px; height: 100px; margin: 4px;" id="'+ attachmentName +'" />';
