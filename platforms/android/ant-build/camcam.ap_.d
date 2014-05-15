@@ -22,9 +22,9 @@
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/js \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/EmailComposer.js \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/bootstrap \
-/home/hanseh/Workspace/p2p/platforms/android/assets/www/orders.html \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/index.html \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/res \
+/home/hanseh/Workspace/p2p/platforms/android/assets/www/order.html \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/css \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/plugins \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/spec.html \

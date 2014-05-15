@@ -111,7 +111,7 @@
 				var id = $_GET["id"];
 
 	        	var request = new XMLHttpRequest();
-	            request.open("GET", "http://local.gemcollection.com/api/orders/"+ id +"?ws_key=BTE4JLUXTV3280TX0CBFBGJDQOPBFF29",true);
+	            request.open("GET", "http://192.155.80.132/prestashop/api/orders/"+ id +"?ws_key=XTDR0LEQ734OSS0LA6URUCDEQ631SPGU",true);
 	            
 	            request.onreadystatechange = function() {
 	                if (request.readyState == 4) {
@@ -130,7 +130,7 @@
 								}
 								
 								var customerRequest = new XMLHttpRequest();
-								customerRequest.open("GET", "http://local.gemcollection.com/api/customers/"+ customerId +"?ws_key=BTE4JLUXTV3280TX0CBFBGJDQOPBFF29",true);
+								customerRequest.open("GET", "http://192.155.80.132/prestashop/api/customers/"+ customerId +"?ws_key=XTDR0LEQ734OSS0LA6URUCDEQ631SPGU",true);
 								
 								customerRequest.onreadystatechange = function() {	
 									 if (customerRequest.readyState == 4) {
