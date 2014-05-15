@@ -17,6 +17,14 @@
  * under the License.
  */
 var app = {
+	// App Config Settings 
+	settings : {
+		prestaUrl: '',
+		prestaKey: '',
+		emailSubject:'',
+		emailTemplate:''
+	},
+	
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -45,5 +53,17 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    
+    loadSettings: function() {
+    	this.settings.prestaUrl = window.localStorage.getItem("prestaUrl");
+		this.settings.prestaKey = window.localStorage.getItem("prestaKey");
+		this.settings.emailSubject = window.localStorage.getItem("emailSubject");
+		this.settings.emailTemplate = window.localStorage.getItem("emailTemplate");
+    },
+    
+    saveSetting: function(key, value) {
+    	window.localStorage.setItem(key, value);
     }
+    
 };
