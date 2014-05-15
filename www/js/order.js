@@ -28,7 +28,7 @@ function onPhotoDataSuccess(imageData) {
 	// Uncomment to view the base64 encoded image data
 	console.log(imageData);
 	
-	var attachmentName = 'attachment'+ order.imageData.length;
+	var attachmentName = 'attachment-'+ order.imageData.length + 1;
 
 	var thumbsDiv = document.getElementById('thumbnails');
 	thumbsDiv.innerHTML += '<img style="width: 100px; height: 100px; margin: 4px;" id="'+ attachmentName +'" />';
@@ -40,7 +40,7 @@ function onPhotoDataSuccess(imageData) {
 	// The inline CSS rules are used to resize the image
 	thumbnail.src = "data:image/jpeg;base64," + imageData;
 	
-	order.imageData.push([attachmentName, imageData]);
+	order.imageData.push([attachmentName+".png", imageData]);
 	
 }
 
