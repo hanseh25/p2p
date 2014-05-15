@@ -65,7 +65,7 @@ var app = {
 			this.settings.emailSubject ='P2P Order Photos';
 		}
 		if (this.settings.emailBody == null || this.settings.emailBody == undefined || this.settings.emailBody == '') {
-			this.settings.emailBody = 'Hi [NAME],\nPlease find attached photos of your orders.\nBest regards,\nP2P Team';
+			this.settings.emailBody = 'Hi [NAME],\n\nPlease find attached photos of your orders.\n\nBest regards,\nP2P Team';
 		}
     },
     
