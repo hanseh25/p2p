@@ -1,4 +1,4 @@
-/home/hanseh/Workspace/p2p/platforms/android/ant-build/camcam.ap_ \
+/home/hanseh/Workspace/p2p/platforms/android/ant-build/p2p.ap_ \
  : /home/hanseh/Workspace/p2p/platforms/android/res/drawable-hdpi/icon.png \
 /home/hanseh/Workspace/p2p/platforms/android/res/drawable-ldpi/icon.png \
 /home/hanseh/Workspace/p2p/platforms/android/res/drawable/icon.png \
