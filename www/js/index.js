@@ -65,7 +65,8 @@ var app = {
 			this.settings.emailSubject ='P2P Order Photos';
 		}
 		if (this.settings.emailBody == null || this.settings.emailBody == undefined || this.settings.emailBody == '') {
-			this.settings.emailBody = 'Hi [NAME],\n\nPlease find attached photos of your orders.\n\nBest regards,\nP2P Team';
+			//this.settings.emailBody = 'Hi [NAME],\n\nPlease find attached photos of your orders.\n\nBest regards,\nP2P Team';
+			this.settings.emailBody = 'Bonjour,\n\n Nous avons le plaisir de vous annoncer que la préparation de votre commande est achevée. Elle sera remise au transporteur dans les plus brefs délais.\nVous trouverez ci-dessous une photo de votre colis et de son contenu.\nNous restons à votre disposition,\n\nL’équipe du Paradis du Thé.'
 		}
     },
     
