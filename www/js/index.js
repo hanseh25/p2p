@@ -17,6 +17,10 @@
  * under the License.
  */
 var app = {
+	
+	// Comma delimited Order Ids
+	emailedOrderIds: '',
+	
 	// App Config Settings 
 	settings : {
 		prestaUrl: '',
@@ -69,6 +73,12 @@ var app = {
 			this.settings.prestaKey = "XTDR0LEQ734OSS0LA6URUCDEQ631SPGU";
 		}
 		
+		if (this.settings.prestaUrl == null || this.settings.prestaUrl == undefined || this.settings.prestaUrl == '') {
+			this.settings.prestaUrl ='http://192.155.80.132/prestashop';
+		}
+		if (this.settings.prestaKey == null || this.settings.prestaKey == undefined || this.settings.prestaKey == '') {
+			this.settings.prestaKey ='XTDR0LEQ734OSS0LA6URUCDEQ631SPGU';
+		}
 		if (this.settings.emailSubject == null || this.settings.emailSubject == undefined || this.settings.emailSubject == '') {
 			this.settings.emailSubject ='P2P Order Photos';
 		}
@@ -79,6 +89,26 @@ var app = {
     
     saveSetting: function(key, value) {
     	window.localStorage.setItem(key, value);
+    },
+    
+    loadEmailedOrderIds: function() {
+    	this.emailedOrderIds = window.localStorage.getItem("emailedOrderIds");
+    	if (this.emailedOrderIds == null || this.emailedOrderIds == undefined || this.emailedOrderIds == '') {
+			this.emailedOrderIds ='';
+		}
+		alert("ids: " + this.emailedOrderIds);
+    },
+    
+    isEmailSent: function(orderId) {
+    	this.loadEmailedOrderIds(); // get the latest
+    	return (this.emailedOrderIds.indexOf(orderId) > -1);
+    },
+    
+    saveEmailedOrderId: function(orderId) {
+    	if (!this.isEmailSent(orderId)) {
+	    	var newStr = this.emailedOrderIds += "," + orderId;
+	    	this.saveSetting("emailedOrderIds", this.emailedOrderIds);
+    	}
     }
     
 };
