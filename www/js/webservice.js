@@ -15,7 +15,13 @@ function getAndListOrders()
 				var orderList = orders[0].getElementsByTagName('order');
 
 				for ( i = 0; i < orderList.length; i++) {
-					document.getElementById('result-rows').innerHTML += "<tr><td>  <a href='order.html?id= " + orderList[i].getAttribute('id') + "'>P2P order # :" + orderList[i].getAttribute('id') + "</a></td></tr>";
+					var row = "<tr>";
+					row += "<td></td>";
+					row += "<td> <a href='order.html?id= " + orderList[i].getAttribute('id') + "'>P2P order # :" + orderList[i].getAttribute('id') + "</a></td>";
+					row += "<td></td>";
+					row += "</tr>";
+					
+					document.getElementById('result-rows').innerHTML = row;
 				}
 			}
 		}
@@ -46,7 +52,7 @@ function getOrderDetails()
 				var jarray = ["id", "id_customer", "invoice_number", "invoice_date", "payment"];
 
 				for ( x = 0; x < 5; x++) {
-					document.getElementById('result-rows').innerHTML += "<tr><td>  " + jarray[x] + " : </td><td>" + order[0].getElementsByTagName(jarray[x])[0].childNodes[0].nodeValue + "</td></tr>";
+					document.getElementById('result-rows').innerHTML += "<tr><td>  " + jarray[x] + " : </td><td> <span id='order_"+ jarray[x] +"'>" + order[0].getElementsByTagName(jarray[x])[0].childNodes[0].nodeValue + "</span> </td></tr>";
 				}
 
 				var customerRequest = new XMLHttpRequest();
