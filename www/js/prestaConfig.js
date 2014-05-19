@@ -21,3 +21,8 @@ function resetFields() {
 	prestaKey.value = app.settings.prestaKey;
 	
 }
+
+function testPrestaConfig()
+{
+
+}

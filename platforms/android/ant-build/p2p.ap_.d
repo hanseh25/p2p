@@ -40,6 +40,7 @@
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine-html.js \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine.css \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine.js \
+/home/hanseh/Workspace/p2p/platforms/android/assets/www/js/webservice.js \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/js/emailTemplate.js \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/js/index.js \
 /home/hanseh/Workspace/p2p/platforms/android/assets/www/js/jquery.min.js \

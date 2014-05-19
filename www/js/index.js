@@ -60,12 +60,19 @@ var app = {
 		this.settings.prestaKey = window.localStorage.getItem("prestaKey");
 		this.settings.emailSubject = window.localStorage.getItem("emailSubject");
 		this.settings.emailBody = window.localStorage.getItem("emailBody");
+
+		if (this.settings.prestaUrl == null || this.settings.prestaUrl == undefined || this.settings.prestaUrl == '') {			
+			this.settings.prestaUrl = "http://192.155.80.132/prestashop";
+		}
+
+		if (this.settings.prestaKey == null || this.settings.prestaKey == undefined || this.settings.prestaKey == '') {			
+			this.settings.prestaKey = "XTDR0LEQ734OSS0LA6URUCDEQ631SPGU";
+		}
 		
 		if (this.settings.emailSubject == null || this.settings.emailSubject == undefined || this.settings.emailSubject == '') {
 			this.settings.emailSubject ='P2P Order Photos';
 		}
 		if (this.settings.emailBody == null || this.settings.emailBody == undefined || this.settings.emailBody == '') {
-			//this.settings.emailBody = 'Hi [NAME],\n\nPlease find attached photos of your orders.\n\nBest regards,\nP2P Team';
 			this.settings.emailBody = 'Bonjour,\n\n Nous avons le plaisir de vous annoncer que la préparation de votre commande est achevée. Elle sera remise au transporteur dans les plus brefs délais.\nVous trouverez ci-dessous une photo de votre colis et de son contenu.\nNous restons à votre disposition,\n\nL’équipe du Paradis du Thé.'
 		}
     },
