@@ -21,6 +21,9 @@ var app = {
 	// Comma delimited Order Ids
 	emailedOrderIds: '',
 	
+	// Array of Order Ids
+	emailOrderIdList: [],
+	
 	// App Config Settings 
 	settings : {
 		prestaUrl: '',
@@ -83,7 +86,7 @@ var app = {
 			this.settings.emailSubject ='P2P Order Photos';
 		}
 		if (this.settings.emailBody == null || this.settings.emailBody == undefined || this.settings.emailBody == '') {
-			this.settings.emailBody = 'Bonjour,\n\n Nous avons le plaisir de vous annoncer que la préparation de votre commande est achevée. Elle sera remise au transporteur dans les plus brefs délais.\nVous trouverez ci-dessous une photo de votre colis et de son contenu.\nNous restons à votre disposition,\n\nL’équipe du Paradis du Thé.'
+			this.settings.emailBody = 'Bonjour,\n\n Nous avons le plaisir de vous annoncer que la préparation de votre commande est achevée. Elle sera remise au transporteur dans les plus brefs délais.\nVous trouverez ci-dessous une photo de votre colis et de son contenu.\nNous restons à votre disposition,\n\nL’équipe du Paradis du Thé.';
 		}
     },
     
@@ -94,14 +97,16 @@ var app = {
     loadEmailedOrderIds: function() {
     	this.emailedOrderIds = window.localStorage.getItem("emailedOrderIds");
     	if (this.emailedOrderIds == null || this.emailedOrderIds == undefined || this.emailedOrderIds == '') {
-			this.emailedOrderIds ='';
+			this.emailedOrderIds = '';
+			this.emailOrderIdList = [];
+		} else {
+			this.emailOrderIdList = this.emailedOrderIds.split(',');
 		}
-		alert("ids: " + this.emailedOrderIds);
     },
     
     isEmailSent: function(orderId) {
     	this.loadEmailedOrderIds(); // get the latest
-    	return (this.emailedOrderIds.indexOf(orderId) > -1);
+    	return (this.emailOrderIdList.indexOf(orderId) > -1);
     },
     
     saveEmailedOrderId: function(orderId) {

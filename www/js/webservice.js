@@ -1,3 +1,4 @@
+
 function getAndListOrders()
 {
 	var request = new XMLHttpRequest();
@@ -16,12 +17,12 @@ function getAndListOrders()
 
 				for ( i = 0; i < orderList.length; i++) {
 					var row = "<tr>";
-					row += "<td></td>";
+					row += getEmailSentColumnText(orderList[i].getAttribute('id'));
 					row += "<td> <a href='order.html?id= " + orderList[i].getAttribute('id') + "'>P2P order # :" + orderList[i].getAttribute('id') + "</a></td>";
 					row += "<td></td>";
 					row += "</tr>";
 					
-					document.getElementById('result-rows').innerHTML = row;
+					document.getElementById('result-rows').innerHTML += row;
 				}
 			}
 		}
@@ -77,6 +78,11 @@ function getOrderDetails()
 				};
 				console.log("fetching email address");
 				customerRequest.send();
+				
+				var id = document.getElementById('order_id').innerHTML;
+				if (app.isEmailSent(id)) {
+					showRemarks(); 
+				}
 			}
 		}
 	};
@@ -103,4 +109,13 @@ function getIdFromParam()
 	});
 
 	return $_GET["id"];
+}
+
+function getEmailSentColumnText(id) {
+
+	if (app.isEmailSent(id)) {
+ 		return "<td><img src='img/email.png' style='height:24px; width:24px'/></td>"; 
+ 	}
+ 	
+	return "<td></td>";	
 }

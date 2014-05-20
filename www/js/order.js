@@ -64,6 +64,7 @@ function onFail(message) {
 }
 
 function sendEmail() {
+	
 	var hemail = document.getElementById('hemail').value;
 	var customerName = document.getElementById('customerName').innerHTML;
 	var templatedMessage = app.settings.emailBody.replace(/\[NAME\]/g, customerName);
@@ -89,7 +90,7 @@ function sendEmail() {
 		  images
 	);
     	
-    markEmailSent();
+	markEmailSent();
 }
 
 // save order id
@@ -97,5 +98,10 @@ function sendEmail() {
 function markEmailSent() {
 	var id = document.getElementById('order_id').innerHTML;
 	app.saveEmailedOrderId(id);
-	alert(app.emailedOrderIds);
+	
+	showRemarks();
+}
+
+function showRemarks() {
+	document.getElementById('remarks').style.display = 'block';
 }
