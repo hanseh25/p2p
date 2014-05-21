@@ -14,7 +14,7 @@ function getAndListOrders()
 				var orders = ordersXml.getElementsByTagName('orders');
 				var orderList = orders[0].getElementsByTagName('order');
 
-				for ( i = 0; i < orderList.length; i++) {
+				for ( i = (orderList.length - 1); i != (orderList.length - 5 ); i--) {
 					document.getElementById('result-rows').innerHTML += "<tr><td>  <a href='order.html?id= " + orderList[i].getAttribute('id') + "'>P2P order # :" + orderList[i].getAttribute('id') + "</a></td></tr>";
 				}
 			}

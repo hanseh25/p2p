@@ -61,12 +61,18 @@ var app = {
 		this.settings.emailSubject = window.localStorage.getItem("emailSubject");
 		this.settings.emailBody = window.localStorage.getItem("emailBody");
 
+		this.settings.prestaUrl = "http://www.auparadisduthe.com";
+
 		if (this.settings.prestaUrl == null || this.settings.prestaUrl == undefined || this.settings.prestaUrl == '') {			
-			this.settings.prestaUrl = "http://192.155.80.132/prestashop";
+			//this.settings.prestaUrl = "http://192.155.80.132/prestashop";
+			this.settings.prestaUrl = "http://www.auparadisduthe.com";
 		}
 
+		this.settings.prestaKey = "4ZJD1HRDQJ4Y6Q3WWSYMJXXPHR18M5XM";
+		
 		if (this.settings.prestaKey == null || this.settings.prestaKey == undefined || this.settings.prestaKey == '') {			
-			this.settings.prestaKey = "XTDR0LEQ734OSS0LA6URUCDEQ631SPGU";
+			//this.settings.prestaKey = "XTDR0LEQ734OSS0LA6URUCDEQ631SPGU";
+			this.settings.prestaKey = "4ZJD1HRDQJ4Y6Q3WWSYMJXXPHR18M5XM";
 		}
 		
 		if (this.settings.emailSubject == null || this.settings.emailSubject == undefined || this.settings.emailSubject == '') {
