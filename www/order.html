@@ -85,12 +85,15 @@ under the License.
 				<div class="row">
 					<div class="col-md-2 col-centered text-center">
 						<!-- the area for buttons/actions sending email and image -->
-						<button type="button" onclick="capturePhoto()">
+						<button class="large" type="button" onclick="capturePhoto()">
 							Capture
 						</button>
-						<button type="button" onclick="sendEmail()">
+						<button class="large green" type="button" onclick="sendEmail()">
 							Send Email
 						</button>
+					</div>
+					<div id="remarks"> 
+						Email sent.
 					</div>
 				</div>
 				<div class="row">
@@ -106,9 +109,9 @@ under the License.
 		<script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/order.js"></script>
 		<script type="text/javascript" src="js/webservice.js"></script>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/order.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			// Wait for PhoneGap to connect with the device

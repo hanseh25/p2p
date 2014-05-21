@@ -1,5 +1,9 @@
 #Last build type
+<<<<<<< HEAD
 #Tue, 20 May 2014 16:25:29 +0800
+=======
+#Wed, 21 May 2014 03:29:33 +0800
+>>>>>>> 1a65fd3a2bbe5e7f34a421c3edd6e695185cc71f
 
 build.last.target=release
 

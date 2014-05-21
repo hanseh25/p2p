@@ -63,13 +63,8 @@ function onFail(message) {
 	alert('Failed because: ' + message);
 }
 
-// Called when email was successful 
-//
-function onSuccessEmailCallback(result) {
-	console.log("email sent" + result);
-}
-
 function sendEmail() {
+	
 	var hemail = document.getElementById('hemail').value;
 	var customerName = document.getElementById('customerName').innerHTML;
 	var templatedMessage = app.settings.emailBody.replace(/\[NAME\]/g, customerName);
@@ -84,7 +79,7 @@ function sendEmail() {
 
 	// [["attachment1.png", imageData]]
     window.plugins.emailComposer.showEmailComposerWithCallback(
-		  onSuccessEmailCallback,
+		  null,
 		  app.settings.emailSubject,
 		  templatedMessage,
 		  [hemail],
@@ -95,4 +90,18 @@ function sendEmail() {
 		  images
 	);
     	
+	markEmailSent();
+}
+
+// save order id
+//
+function markEmailSent() {
+	var id = document.getElementById('order_id').innerHTML;
+	app.saveEmailedOrderId(id);
+	
+	showRemarks();
+}
+
+function showRemarks() {
+	document.getElementById('remarks').style.display = 'block';
 }
