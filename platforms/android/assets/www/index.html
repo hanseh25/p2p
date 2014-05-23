@@ -27,6 +27,7 @@ under the License.
 
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
 
 		<title>p2p User Dashboard</title>
 	</head>
@@ -82,7 +83,6 @@ under the License.
 							<tr>
 								<th style="width: 10%"></th>
 								<th>Order</th>
-								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody id="result-rows">
@@ -92,6 +92,14 @@ under the License.
 				</div>
 			</div>
 
+				<div class="row">
+					<div class="col-md-2 col-centered text-center">
+						<!-- the area for buttons/actions sending email and image -->
+						<button class="large" type="button" onclick="refresh()">
+							Refresh
+						</button>
+					</div>
+				<div>
 		</div>
 
 		<script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>

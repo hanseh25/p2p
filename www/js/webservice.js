@@ -3,8 +3,9 @@ function getAndListOrders()
 {
 	var request = new XMLHttpRequest();
 	var wsUrl	= getWebserviceHandle("orders");
+	var randCheck = Math.floor(Math.random() * 100) + 1;
 
-	request.open("GET", wsUrl + "&filter[current_state]=[3]", true);
+	request.open("GET", wsUrl + "&filter[current_state]=[3]&rand=" + randCheck, true);
 
 	request.onreadystatechange = function() {
 		if (request.readyState == 4) {
@@ -94,6 +95,13 @@ function getOrderDetails()
 function getWebserviceHandle(controlKey)
 {
 	return app.settings.prestaUrl + "/api/" + controlKey + "?ws_key=" + app.settings.prestaKey;
+}
+
+function refresh()
+{
+	document.getElementById('result-rows').innerHTML = "";
+
+	getAndListOrders();
 }
 
 function getIdFromParam()

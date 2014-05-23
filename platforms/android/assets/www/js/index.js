@@ -76,7 +76,7 @@ var app = {
 		}
 
 		this.settings.prestaKey = "4ZJD1HRDQJ4Y6Q3WWSYMJXXPHR18M5XM";
-		
+
 		if (this.settings.prestaKey == null || this.settings.prestaKey == undefined || this.settings.prestaKey == '') {			
 			//this.settings.prestaKey = "XTDR0LEQ734OSS0LA6URUCDEQ631SPGU";
 			this.settings.prestaKey = "4ZJD1HRDQJ4Y6Q3WWSYMJXXPHR18M5XM";
