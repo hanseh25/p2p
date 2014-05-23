@@ -4,7 +4,7 @@ function getAndListOrders()
 	var request = new XMLHttpRequest();
 	var wsUrl	= getWebserviceHandle("orders");
 
-	request.open("GET", wsUrl, true);
+	request.open("GET", wsUrl + "&filter[current_state]=[3]", true);
 
 	request.onreadystatechange = function() {
 		if (request.readyState == 4) {
@@ -15,10 +15,6 @@ function getAndListOrders()
 				var orders = ordersXml.getElementsByTagName('orders');
 				var orderList = orders[0].getElementsByTagName('order');
 
-<<<<<<< HEAD
-				for ( i = (orderList.length - 1); i != (orderList.length - 5 ); i--) {
-					document.getElementById('result-rows').innerHTML += "<tr><td>  <a href='order.html?id= " + orderList[i].getAttribute('id') + "'>P2P order # :" + orderList[i].getAttribute('id') + "</a></td></tr>";
-=======
 				for ( i = 0; i < orderList.length; i++) {
 					var row = "<tr>";
 					row += getEmailSentColumnText(orderList[i].getAttribute('id'));
@@ -27,7 +23,6 @@ function getAndListOrders()
 					row += "</tr>";
 					
 					document.getElementById('result-rows').innerHTML += row;
->>>>>>> 1a65fd3a2bbe5e7f34a421c3edd6e695185cc71f
 				}
 			}
 		}
