@@ -21,15 +21,14 @@ var order = {
 	encodingType: '' // image encoding type
 };
 
-var imageCount = 0;
-
 // Called when a photo is successfully retrieved
 //
 function onPhotoDataSuccess(imageData) {
 	// Uncomment to view the base64 encoded image data
 	console.log(imageData);
 	
-	var attachmentName = 'attachment-'+ (++imageCount);
+	var id = document.getElementById('order_id').innerHTML;
+	var attachmentName = 'order-' + id + '-' + formatDate(new Date());
 
 	var thumbsDiv = document.getElementById('thumbnails');
 	thumbsDiv.innerHTML += '<img style="width: 100px; height: 100px; margin: 4px;" id="'+ attachmentName +'" />';
@@ -104,4 +103,18 @@ function markEmailSent() {
 
 function showRemarks() {
 	document.getElementById('remarks').style.display = 'block';
+}
+
+function formatDate(temp) {
+    var dateStr = padStr(temp.getFullYear()) +
+                  padStr(1 + temp.getMonth()) +
+                  padStr(temp.getDate()) +
+                  padStr(temp.getHours()) +
+                  padStr(temp.getMinutes()) +
+                  padStr(temp.getSeconds());
+    return (dateStr );
+}
+
+function padStr(i) {
+    return (i < 10) ? "0" + i : "" + i;
 }
