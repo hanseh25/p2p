@@ -111,12 +111,12 @@ under the License.
 			document.addEventListener("deviceready", onDeviceReady, false);
 
 			function onDeviceReady() {
+				app.loadSettings();
 				getAndListOrders();
 			}
 		</script>
 		<script type="text/javascript">
 			app.initialize();
-			app.loadSettings();
 		</script>
 		<script type="text/javascript">
 			$(function() {

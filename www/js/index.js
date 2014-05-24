@@ -68,31 +68,30 @@ var app = {
 		this.settings.emailSubject = window.localStorage.getItem("emailSubject");
 		this.settings.emailBody = window.localStorage.getItem("emailBody");
 
-		// this.settings.prestaUrl = "http://www.auparadisduthe.com";
-
-		if (this.settings.prestaUrl == null || this.settings.prestaUrl == undefined || this.settings.prestaUrl == '') {			
+		this.setDefaultSettings();
+    },
+    
+    setDefaultSettings: function() {
+    	if (this.settings.prestaUrl == null || this.settings.prestaUrl == undefined || this.settings.prestaUrl == '') {			
 			//this.settings.prestaUrl = "http://192.155.80.132/prestashop";
 			this.settings.prestaUrl = "http://www.auparadisduthe.com";
+			this.saveSetting("prestaUrl", this.settings.prestaUrl);
 		}
-
-		// this.settings.prestaKey = "4ZJD1HRDQJ4Y6Q3WWSYMJXXPHR18M5XM";
 
 		if (this.settings.prestaKey == null || this.settings.prestaKey == undefined || this.settings.prestaKey == '') {			
 			//this.settings.prestaKey = "XTDR0LEQ734OSS0LA6URUCDEQ631SPGU";
 			this.settings.prestaKey = "4ZJD1HRDQJ4Y6Q3WWSYMJXXPHR18M5XM";
+			this.saveSetting("prestaKey", this.settings.prestaKey);
 		}
 		
-		if (this.settings.prestaUrl == null || this.settings.prestaUrl == undefined || this.settings.prestaUrl == '') {
-			this.settings.prestaUrl ='http://192.155.80.132/prestashop';
-		}
-		if (this.settings.prestaKey == null || this.settings.prestaKey == undefined || this.settings.prestaKey == '') {
-			this.settings.prestaKey ='XTDR0LEQ734OSS0LA6URUCDEQ631SPGU';
-		}
 		if (this.settings.emailSubject == null || this.settings.emailSubject == undefined || this.settings.emailSubject == '') {
 			this.settings.emailSubject ='P2P Order Photos';
+			this.saveSetting("emailSubject", this.settings.emailSubject);
 		}
+		
 		if (this.settings.emailBody == null || this.settings.emailBody == undefined || this.settings.emailBody == '') {
 			this.settings.emailBody = 'Bonjour,\n\n Nous avons le plaisir de vous annoncer que la préparation de votre commande est achevée. Elle sera remise au transporteur dans les plus brefs délais.\nVous trouverez ci-dessous une photo de votre colis et de son contenu.\nNous restons à votre disposition,\n\nL’équipe du Paradis du Thé.';
+			this.saveSetting("emailBody", this.settings.emailBody);
 		}
     },
     
