@@ -83,7 +83,7 @@ function sendEmail() {
 		  templatedMessage,
 		  [hemail],
 		  [],
-		  ["hans.torres@98labs.com","allan.danos@98labs.com"],
+		  ["guillaume.devaux+P2P@gmail.com"],
 		  false,
 		  [],
 		  images

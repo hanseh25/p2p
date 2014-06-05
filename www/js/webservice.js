@@ -3,9 +3,8 @@ function getAndListOrders()
 {
 	var request = new XMLHttpRequest();
 	var wsUrl	= getWebserviceHandle("orders");
-	var randCheck = Math.floor(Math.random() * 100) + 1;
 
-	request.open("GET", wsUrl + "&filter[current_state]=[3]&rand=" + randCheck, true);
+	request.open("GET", wsUrl + "&display=[id_customer,id]&filter[current_state]=[3]&rand=" + formatDate(new Date()), true);
 
 	request.onreadystatechange = function() {
 		if (request.readyState == 4) {
@@ -17,13 +16,43 @@ function getAndListOrders()
 				var orderList = orders[0].getElementsByTagName('order');
 
 				for ( i = 0; i < orderList.length; i++) {
+
 					var row = "<tr>";
-					row += getEmailSentColumnText(orderList[i].getAttribute('id'));
-					row += "<td> <a href='order.html?id= " + orderList[i].getAttribute('id') + "'>P2P order # :" + orderList[i].getAttribute('id') + "</a></td>";
+					row += getEmailSentColumnText(orderList[i].getElementsByTagName('id')[0].childNodes[0].nodeValue);
+					row += "<td> <a href='order.html?id= " + orderList[i].getElementsByTagName('id')[0].childNodes[0].nodeValue + "'>Order # " + orderList[i].getElementsByTagName('id')[0].childNodes[0].nodeValue + " - <span id='cname"+ orderList[i].getElementsByTagName('id')[0].childNodes[0].nodeValue + "'></span></a></td>";
 					row += "<td></td>";
 					row += "</tr>";
 					
 					document.getElementById('result-rows').innerHTML += row;
+				}
+
+				for ( i = 0; i < orderList.length; i++) {
+					var customerRequest = new XMLHttpRequest();
+					var customerWsUrl	= getWebserviceHandle("customers/" + orderList[i].getElementsByTagName('id_customer')[0].childNodes[0].nodeValue);
+					var cname = '';
+
+					customerRequest.open("GET", customerWsUrl + "&rand=" + formatDate(new Date()), true);
+					customerRequest.onreadystatechange = ( function(i, cname, customerRequest) {
+						 return function(aEvt) {
+							if (customerRequest.readyState == 4) {
+								if (customerRequest.status == 200 || customerRequest.status == 0) {
+									var customerXml = customerRequest.responseXML;
+									var customer = customerXml.getElementsByTagName("customer");
+				
+									cname = customer[0].getElementsByTagName("firstname")[0].childNodes[0].nodeValue + " " + customer[0].getElementsByTagName("lastname")[0].childNodes[0].nodeValue;							
+									var span = document.getElementById('cname' + orderList[i].getElementsByTagName('id')[0].childNodes[0].nodeValue );
+
+									while( span.firstChild ) {
+										span.removeChild( span.firstChild );
+									}
+									span.appendChild( document.createTextNode(cname) );
+								}
+							}
+						};					
+					}(i, cname, customerRequest));
+					
+					console.log("fetching email address");
+					customerRequest.send();				
 				}
 			}
 		}
@@ -126,4 +155,18 @@ function getEmailSentColumnText(id) {
  	}
  	
 	return "<td></td>";	
+}
+
+function formatDate(temp) {
+    var dateStr = padStr(temp.getFullYear()) +
+                  padStr(1 + temp.getMonth()) +
+                  padStr(temp.getDate()) +
+                  padStr(temp.getHours()) +
+                  padStr(temp.getMinutes()) +
+                  padStr(temp.getSeconds());
+    return (dateStr );
+}
+
+function padStr(i) {
+    return (i < 10) ? "0" + i : "" + i;
 }
