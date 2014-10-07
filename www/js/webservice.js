@@ -4,11 +4,12 @@ function getAndListOrders()
 	var request = new XMLHttpRequest();
 	var wsUrl	= getWebserviceHandle("orders");
 
-	request.open("GET", wsUrl + "&display=[id_customer,id]&filter[current_state]=[3]&rand=" + formatDate(new Date()), true);
-
+	request.open("GET", wsUrl + "&display=[id_customer,id]&filter[current_state]=3&rand=" + formatDate(new Date()), true);
 	request.onreadystatechange = function() {
+
 		if (request.readyState == 4) {
 			if (request.status == 200 || request.status == 0) {
+
 				var ordersXml = request.responseXML;
 
 				var ordersRequest = new XMLHttpRequest();

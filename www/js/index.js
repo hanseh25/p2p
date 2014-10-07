@@ -72,14 +72,16 @@ var app = {
     },
     
     setDefaultSettings: function() {
+		this.settings.prestaUrl = '';
     	if (this.settings.prestaUrl == null || this.settings.prestaUrl == undefined || this.settings.prestaUrl == '') {			
 			//this.settings.prestaUrl = "http://192.155.80.132/prestashop";
 			this.settings.prestaUrl = "http://www.auparadisduthe.com";
 			this.saveSetting("prestaUrl", this.settings.prestaUrl);
 		}
 
+		this.settings.prestaKey = '';
 		if (this.settings.prestaKey == null || this.settings.prestaKey == undefined || this.settings.prestaKey == '') {			
-			//this.settings.prestaKey = "XTDR0LEQ734OSS0LA6URUCDEQ631SPGU";
+			//this.settings.prestaKey = "U653UHI3X7QT2U4QS1DGVP7YN1VAD4K2";
 			this.settings.prestaKey = "4ZJD1HRDQJ4Y6Q3WWSYMJXXPHR18M5XM";
 			this.saveSetting("prestaKey", this.settings.prestaKey);
 		}
